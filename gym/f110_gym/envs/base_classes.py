@@ -106,7 +106,7 @@ class RaceCar(object):
 
         # steering delay buffer
         self.steer_buffer = np.empty((0, ))
-        self.steer_buffer_size = 2
+        self.steer_buffer_size = 1
 
         # collision identifier
         self.in_collision = False
@@ -595,6 +595,7 @@ class Simulator(object):
             'scans': [],
             'poses_x': [],
             'poses_y': [],
+            'steering_angle': [],
             'poses_theta': [],
             'linear_vels_x': [],
             'linear_vels_y': [],
@@ -604,6 +605,7 @@ class Simulator(object):
             observations['scans'].append(agent_scans[i])
             observations['poses_x'].append(agent.state[0])
             observations['poses_y'].append(agent.state[1])
+            observations['steering_angle'].append(agent.state[2])
             observations['poses_theta'].append(agent.state[4])
             observations['linear_vels_x'].append(agent.state[3])
             observations['linear_vels_y'].append(0.)

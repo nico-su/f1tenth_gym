@@ -165,6 +165,7 @@ class F110Env(gym.Env):
         self.poses_x = []
         self.poses_y = []
         self.poses_theta = []
+        self.steering_angles = []
         self.collisions = np.zeros((self.num_agents, ))
         # TODO: collision_idx not used yet
         # self.collision_idx = -1 * np.ones((self.num_agents, ))
@@ -259,6 +260,7 @@ class F110Env(gym.Env):
         self.poses_y = obs_dict['poses_y']
         self.poses_theta = obs_dict['poses_theta']
         self.collisions = obs_dict['collisions']
+        self.steering_angles = obs_dict['steering_angle']
 
     def step(self, action):
         """
@@ -285,6 +287,7 @@ class F110Env(gym.Env):
             'ego_idx': obs['ego_idx'],
             'poses_x': obs['poses_x'],
             'poses_y': obs['poses_y'],
+            'steering_angles': obs['steering_angle'],
             'poses_theta': obs['poses_theta'],
             'lap_times': obs['lap_times'],
             'lap_counts': obs['lap_counts']
