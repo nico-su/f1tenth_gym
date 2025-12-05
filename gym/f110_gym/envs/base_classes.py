@@ -106,7 +106,7 @@ class RaceCar(object):
 
         # steering delay buffer
         self.steer_buffer = np.empty((0, ))
-        self.steer_buffer_size = 1
+        self.steer_buffer_size = 2
 
         # collision identifier
         self.in_collision = False
