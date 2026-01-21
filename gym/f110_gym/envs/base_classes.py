@@ -106,7 +106,11 @@ class RaceCar(object):
 
         # steering delay buffer
         self.steer_buffer = np.empty((0, ))
-        self.steer_buffer_size = 2
+
+        # MODIFIED BUFFER
+        target_latency = 0.02
+        self.steer_buffer_size = int(np.ceil(target_latency / self.time_step))
+        print(self.steer_buffer_size)
 
         # collision identifier
         self.in_collision = False

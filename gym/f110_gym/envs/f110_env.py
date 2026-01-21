@@ -216,8 +216,8 @@ class F110Env(gym.Env):
 
         # this is assuming 2 agents
         # TODO: switch to maybe s-based
-        left_t = 2
-        right_t = 2
+        left_t = 0.5 #2
+        right_t = 0.5 #2
         
         poses_x = np.array(self.poses_x)-self.start_xs
         poses_y = np.array(self.poses_y)-self.start_ys
