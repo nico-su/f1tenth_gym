@@ -109,8 +109,8 @@ class RaceCar(object):
 
         # MODIFIED BUFFER
         target_latency = 0.02
-        self.steer_buffer_size = int(np.ceil(target_latency / self.time_step))
-        print(self.steer_buffer_size)
+        self.steer_buffer_size = 1 #int(np.ceil(target_latency / self.time_step))
+        print('Buffer size:', self.steer_buffer_size)
 
         # collision identifier
         self.in_collision = False
@@ -152,7 +152,11 @@ class RaceCar(object):
                 else:
                     if angle > -np.pi/2:
                         # between 0 and -pi/2
-                        to_side = dist_sides / np.sin(-angle)
+                        sin_val = np.sin(-angle)
+                        if abs(sin_val) > 1e-10:
+                            to_side = dist_sides / sin_val
+                        else:
+                            to_side = np.inf
                         to_fr = dist_fr / np.cos(-angle)
                         RaceCar.side_distances[i] = min(to_side, to_fr)
                     else:
